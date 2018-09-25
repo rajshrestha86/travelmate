@@ -42,13 +42,13 @@
                 $result=mysqli_query($conn,$sql);
                 if($result){
                     echo "Added new user successfully";
-                    header('location: /travelmate/navigation.php');
+                    header('location: /travelmate/login.php');
                 }
                 else
                     echo "Error occured.";
             }
 
-            include '../register.php';
+            
 		
 	}
 	

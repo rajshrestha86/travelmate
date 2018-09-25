@@ -1,4 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['id'])) {
+    header('location: home.php');
+}
 
+?>
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -21,7 +27,7 @@
 	<h4 class="card-title mt-2">Log In</h4>
 </header>
 <article class="card-body">
-<form action='controller/user_register.php' method='post'>
+<form action='controller/user_login.php' method='post'>
     <div class="form-group">
 		<label>Username</label>
 		<input type="text" name='username' class="form-control" placeholder="">
