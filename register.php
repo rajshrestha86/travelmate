@@ -1,28 +1,32 @@
 
+<?php include 'navigation_header.php' ?>
+<?php include 'controller/user_register.php' ?>
 
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link href="css/card.css" rel="stylesheet">
 
 
 <div class="container">
 <br>
-<br>
-<br>
 
-<div class="row justify-content-center">
-<div class="col-md-6">
+
+
+<div class="row" style="{
+    -webkit-box-pack:center!important;
+    -ms-flex-pack:center!important;
+    justify-content:center!important
+}">
+<div class="col-md-6" style="float: none; margin: 0 auto;">
 <div class="card">
 <header class="card-header">
-	<a href="login.php" class="float-right btn btn-outline-primary mt-1">Log in</a>
 	<h4 class="card-title mt-2">Sign up</h4>
 </header>
 <article class="card-body">
-<form action='controller/user_register.php' method='post'>
+<?php include 'controller/errors.php' ?>
+<form action='' method='post'>
 	<div class="form-row">
 		<div class="col form-group">
 			<label>First name </label>   
