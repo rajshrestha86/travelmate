@@ -6,13 +6,14 @@ if (isset($_SESSION['id'])) {
 
 ?>
 
+<?php include 'navigation_header.php' ?>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<link href="css/card.css" rel="stylesheet">
 
 
 <div class="container">
@@ -20,8 +21,12 @@ if (isset($_SESSION['id'])) {
 <br>
 <br>
 
-<div class="row justify-content-center">
-<div class="col-md-6">
+<div class="row justify-content-center" style="{
+    -webkit-box-pack:center!important;
+    -ms-flex-pack:center!important;
+    justify-content:center!important
+	}">
+<div class="col-md-6" style="float: none; margin: 0 auto;">
 <div class="card">
 <header class="card-header">
 	<h4 class="card-title mt-2">Log In</h4>
