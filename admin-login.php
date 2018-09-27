@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>Startmin - Bootstrap Admin Theme</title>
-
-        <!-- Bootstrap Core CSS -->
-        <link href="css/admin/bootstrap.min.css" rel="stylesheet">
-
-        <link href="css/admin/startmin.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    
-
-    </head>
-    <body>
+<?php
+    include 'header.php';
+?>
 
         <div class="container">
             <div class="row">
@@ -30,10 +13,10 @@
                             <form role="form">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                        <input class="form-control" placeholder="Username" id="admin_username_in" type="text" autofocus required>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                        <input class="form-control" placeholder="Password" id="admin_password_in" type="password" required>
                                     </div>
                                     <div class="checkbox">
                                         <label>
@@ -41,7 +24,7 @@
                                         </label>
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
-                                    <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                    <button class="btn btn-lg btn-success btn-block" type="button" onclick="authenticate_admin()">Login In</button>
                                 </fieldset>
                             </form>
                         </div>
@@ -50,17 +33,8 @@
             </div>
         </div>
 
-       <!-- jQuery -->
-        <script src="script/admin//jquery.min.js"></script>
+       
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="script/admin//bootstrap.min.js"></script>
-
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="script/admin//metisMenu.min.js"></script>
-
-        <!-- Custom Theme JavaScript -->
-        <script src="script/admin/startmin.js"></script>
-
-    </body>
-</html>
+   <?php
+    include 'footer.php';
+   ?>

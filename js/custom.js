@@ -17,6 +17,10 @@
 }
 */
 
+function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue ;
+}
+
 var branchID;
 function remove_branch($branchID){
 	swal({
@@ -108,5 +112,99 @@ function register_branch(){
 
 	alert(status);
 	windows.location.replace('branch_manage.php');
+
+}
+
+function authenticate_admin(){
+    var username=document.getElementById('admin_username_in').value;
+    var password=document.getElementById('admin_password_in').value;
+    var authenticated=false;
+    $.ajax({
+
+        type: "POST",
+         url: "./controller/admin_authenticate.php",
+         async: false,
+         data: {admin_username_in:username,admin_password_in:password},
+         success : function(response)
+         {
+             if(response){
+                 
+                 var arr=JSON.parse(response);
+                 setCookie('username',arr[0]);
+                 var branch=arr.slice(1);
+                 
+                 setCookie('branch',branch);
+                 setCookie('branch_selected',branch[0]);
+                 authenticated = true;
+             }
+             else
+             {
+                 alert("Username or Password incorrect");
+             }
+             
+         }
+});
+if(authenticated){
+    
+    location.replace("admin.php");
+    
+}
+
+}
+
+function remove_staff($staffID){
+	swal({
+		title: "Are you sure?",
+		text: "Once deleted, you will not be able to recover this information!",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	})
+	.then((willDelete) => {
+		if (willDelete) {
+			$.ajax({
+
+                type: "POST",
+                 url: "controller/staff_remove.php",
+                 async: false,
+                 data: {staffID:$staffID},
+                 success : function(text)
+                 {
+                     status = text;
+                     swal("This staff has been deleted!", {
+						icon: "success",
+					 });
+					 location.reload();
+
+                 }
+      });
+
+
+			
+		} 
+	});
+
+	
+}
+
+
+function add_currency(){
+	var name=document.getElementById("input_currency_name").value;
+	var amount=document.getElementById("input_currency_amount").value;
+    var image=document.getElementById("input_currency_image").value;
+    	
+	$.ajax({
+
+                type: "POST",
+                 url: "controller/inventory_add.php",
+                 async: false,
+                 data: {name:name,amount:amount,image:image},
+                 success : function(text)
+                 {
+                     status = text;
+                     alert(status);
+                     
+                 }
+      });
 
 }

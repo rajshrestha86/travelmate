@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">AUS VINTAGE CLOTHING</a>
@@ -40,9 +41,42 @@
                     <!-- Notifications generated via php -->
                 </ul>
             </li>
+
+           
+
+            <li class="dropdown">
+                
+                <?php
+                            $string=$_COOKIE['branch'];
+                            
+                            $array = explode(',', $string);
+                            
+                ?>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-map-marker fa-fw"></i><?php echo $_COOKIE['branch_selected'];?> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                
+                
+                <?php
+                            for ($i=0;$i<count($array);$i++){
+
+                                                    
+                    ?>
+                    <li><a href="#" onclick="select_branch('<?php echo $array[$i];?>')"> <?php echo $array[$i];?><i class="fa <?php if ($array[$i]==$_COOKIE['branch_selected']) echo 'fa-check'; ?> fa-fw"></i></a></li>
+                            <?php }?>
+                    
+                </ul>
+            </li>
+
+            
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> Username <b class="caret"></b>
+                    <i class="fa fa-user fa-fw"></i><?php
+                           
+                            echo $_COOKIE['username'];
+                            
+                    ?> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -50,7 +84,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <li><a href="controller/logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 </ul>
             </li>
@@ -85,6 +119,9 @@
                             <li>
                                 <a href="staff_register.php">Register</a>
                             </li>
+                            <li>
+                                <a href="staff_manage.php">Manage</a>
+                            </li>
                             
                         </ul>
                     </li>
@@ -94,7 +131,10 @@
                         <a href="#" class="<?php if ($selected == 'inventory') echo 'active'; ?>"><i class="fa fa-shopping-cart fa-fw"></i> Inventory Management<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Register</a>
+                                <a href="add_currency.php">Add Currency</a>
+                            </li>
+                            <li>
+                                <a href="inventory_manage.php">Manage</a>
                             </li>
                             
                         </ul>
@@ -128,3 +168,14 @@
             </div>
         </div>
     </nav>
+
+    
+
+    <script>
+        function select_branch($branch_name){
+            
+            document.cookie = "branch_selected" + "=" + $branch_name ;
+            location.reload();
+
+        }
+    </script>
