@@ -254,9 +254,10 @@ if(authenticated){
 }
 
 
-function check_currency_balance(){
+function check_currency_balance($currency){
     $id=document.getElementById('currency_selector').value;
-    alert($id);
+    setCookie('currency_name',$currency);
+    //alert($curr);
     $.ajax({
 
         type: "POST",
@@ -266,8 +267,17 @@ function check_currency_balance(){
          success : function(response)
          {
              if(response){
-                 alert(response);
+                alert(response);
+                console.log(response);
+                 //setCookie('total',response);
+                 document.getElementById("max_transfer_amount").innerHTML="maximum transferable amount = "+ response;
+                 document.getElementById("transfer_amount_in").setAttribute("max",response);
+                 document.getElementById("max_transfer_amount").style.color="green";
                  
+                 
+            }
+            else{
+                console.log("no any response");
             }
         }
     }); 

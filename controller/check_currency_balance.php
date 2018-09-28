@@ -7,10 +7,13 @@
         $sql="SELECT * FROM inventory WHERE id=$id";
         $result=mysqli_query($conn,$sql);
         $count = 1;
+        $total;
         while($row = mysqli_fetch_assoc($result)) {
-            echo $row['total'];
+            $total=$row['total'];
     
         }
+        $_SESSION['total_balance']=$total;
+        echo  $_SESSION['total_balance'];
 	}
    
 ?>

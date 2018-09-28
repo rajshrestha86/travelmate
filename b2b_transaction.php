@@ -1,7 +1,7 @@
 <?php 
 session_start();
-$title="Branch Management";
-$selected="inventory";
+$title="Branch Transaction";
+//$selected="transaction";
 include 'header.php';
 ?>
 
@@ -17,7 +17,7 @@ include 'header.php';
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Inventory Details </h1>
+                    <h1 class="page-header">Branch-Branch Transaction </h1>
                 </div>
             </div>
 
@@ -30,11 +30,11 @@ include 'header.php';
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Currency Name</th>
-                                        <th>Country</th>
-                                        <th>Total Amount</th>
-                                        <th>Branch</th>
-                                        <th>Sample Image</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Amount</th>
+                                        <th>Timestamp</th>
+                                        <th>Staff</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,7 +43,7 @@ include 'header.php';
 
 
 
-                                    $sql="SELECT I.name as currency,country,total,B.name as bname,image FROM inventory as I JOIN branch as B on I.branch=B.id";
+                                    $sql="SELECT sender.name as sender,receiver.name as receiver,amount,timestamp,staff from b2b_transaction AS T JOIN branch AS sender JOIN branch AS receiver ON T.from=sender.id AND T.to=receiver.id ORDER BY timestamp DESC";
                                     $result=mysqli_query($conn,$sql);
                                     $count = 1;
                                     while($row = mysqli_fetch_assoc($result)) {
@@ -55,11 +55,12 @@ include 'header.php';
 
                                         <tr>
                                             <td><?php echo  $count ?></td>        
-                                            <td><?php echo  $row["currency"]?></td>
-                                            <td><?php echo  $row["country"]?></td>
-                                            <td><?php echo  $row["total"]?></td>
-                                            <td><?php echo  $row["bname"]?></td>
-                                            <td><img class="inventory_staff_img" height="50px" width="50px" src="upload/<?php echo  $row['image']?>"></td>
+                                            <td><?php echo  $row["sender"]?></td>
+                                            <td><?php echo  $row["receiver"]?></td>
+                                            <td><?php echo  $row["amount"]?></td>
+                                            <td><?php echo  $row["timestamp"]?></td>
+                                            <td><?php echo  $row["staff"]?></td>
+                                            
                                             
 
                                         </tr>

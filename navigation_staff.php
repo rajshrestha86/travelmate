@@ -120,7 +120,7 @@
                                 <a href="sell_cash.php">Sell Cash</a>
                             </li>
                             <li>
-                                <a href="POS_transaction.php">Transaction</a>
+                                <a href="b2c_transaction.php">Transaction</a>
                             </li>
                             
                         </ul>
@@ -137,11 +137,20 @@
                     <!-- Transaction -->
                     <li>
                         <a href="#" class="<?php if ($selected == 'transaction') echo 'active'; ?>"><i class="fa fa-dollar fa-fw"></i> Transactions</a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="b2b_transaction.php">Branch-Branch Transaction</a>
+                            </li>
+                            <li>
+                                <a href="b2c_transaction.php">Branch-Customer Transaction</a>
+                            </li>
+                            
+                        </ul>
                         
                     </li>
 
                      <li>
-                        <a href="" class="<?php if ($selected == 'remittance') echo 'active'; ?>"><i class="fa fa-dollar fa-fw"></i> Remittance</a>
+                        <a href="#" class="<?php if ($selected == 'remittance') echo 'active'; ?>"><i class="fa fa-dollar fa-fw"></i> Remittance</a>
                         
                     </li>
 
