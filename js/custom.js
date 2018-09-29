@@ -1,3 +1,7 @@
+// ***************************** ADMIN SECTION *****************************************************************************
+
+
+
 /*function remove_branch($branchID){
 	alert($branchID);
 
@@ -191,7 +195,8 @@ function remove_staff($staffID){
 function add_currency(){
 	var name=document.getElementById("input_currency_name").value;
 	var amount=document.getElementById("input_currency_amount").value;
-    var image=document.getElementById("input_currency_image").value;
+    var image=document.getElementById("input_currency_image").files[0].name;
+    alert(image);
     	
 	$.ajax({
 
@@ -207,4 +212,73 @@ function add_currency(){
                  }
       });
 
+}
+
+
+
+
+
+
+//***************************************This is Staff Section************************************************************************
+
+function authenticate_staff(){
+    var username=document.getElementById('staff_username_in').value;
+    var password=document.getElementById('staff_password_in').value;
+    var branch=document.getElementById('staff_branch_in').value;
+    var authenticated=false;
+    $.ajax({
+
+        type: "POST",
+         url: "./controller/staff_authenticate.php",
+         async: false,
+         data: {username:username,password:password,branch:branch},
+         success : function(response)
+         {
+             if(response){
+                 alert(response);
+                 
+                 authenticated = true;
+             }
+             else
+             {
+                 alert("Username, Password or Branch incorrect");
+             }
+             
+         }
+});
+if(authenticated){
+    
+    location.replace("staff.php");
+    
+}
+}
+
+
+function check_currency_balance($currency){
+    $id=document.getElementById('currency_selector').value;
+    setCookie('currency_name',$currency);
+    //alert($curr);
+    $.ajax({
+
+        type: "POST",
+         url: "./controller/check_currency_balance.php",
+         async: false,
+         data: {id:$id},
+         success : function(response)
+         {
+             if(response){
+                alert(response);
+                console.log(response);
+                 //setCookie('total',response);
+                 document.getElementById("max_transfer_amount").innerHTML="maximum transferable amount = "+ response;
+                 document.getElementById("transfer_amount_in").setAttribute("max",response);
+                 document.getElementById("max_transfer_amount").style.color="green";
+                 
+                 
+            }
+            else{
+                console.log("no any response");
+            }
+        }
+    }); 
 }
