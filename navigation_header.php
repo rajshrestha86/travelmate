@@ -17,10 +17,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="home.php">Home</a></li>
-        <li><a href="#">Money Exchange</a></li>
-        <li><a href="#">Online Remittence</a></li>
-        <li><a href="#">Locations</a></li>
-        <li><a href="#">Forms</a></li>
+        <li><a href="#">Shop Locations</a></li>
+        <li><a href="#">Privacy and Policy</a></li>
         <li><a href="#">Refund Policy</a></li>
         <li><a href="#">Contact US</a></li>
         <li><a href="#">About US</a></li>
