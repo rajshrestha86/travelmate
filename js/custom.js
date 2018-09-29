@@ -282,3 +282,110 @@ function check_currency_balance($currency){
         }
     }); 
 }
+
+
+
+// function get_currency_details($currency){
+//     $id=document.getElementById('currency_selector').value;
+//     setCookie('currency_name',$currency);
+//     //alert($curr);
+//     $.ajax({
+
+//         type: "GET",
+//          url: "./controller/get_currency_details.php",
+         
+//          success : function(response)
+//          {
+//              if(response){
+//                 alert(response);
+//                 var currency=JSON.parse(response);
+//                 var max=parseFloat(currency.total);
+//                 console.log(currency.commission);
+//                  //setCookie('total',response);
+//                  document.getElementById("max_selling_amount").innerHTML="maximum selling amount = "+ parseFloat(currency.total);;
+//                  document.getElementById("transfer_amount_in").setAttribute("max",parseFloat(currency.total));
+//                  document.getElementById("max_selling_amount").style.color="green";
+//                  document.getElementById("input_commission").value=parseFloat(currency.commission);
+//                  document.getElementById("input_selling_rate").value=parseFloat(currency.selling_rate);
+                                
+//             }
+//             else{
+//                 console.log("no any response");
+//             }
+//         }
+//     }); 
+// }
+
+// function calculate_total(){
+//     console.log("got it");
+//     var reqd_amount=document.getElementById('transfer_amount_in').value;
+//     var rate=document.getElementById('input_selling_rate').value;
+//     var commission=document.getElementById('input_commission').value;
+//     var total=reqd_amount*rate*(1+commission/100);
+//     document.getElementById('total_amount').value=total.toFixed(2);
+//     console.log(total);
+// }
+
+
+function get_currency_details($currency,$purpose){
+    $id=document.getElementById('currency_selector').value;
+    setCookie('currency_name',$currency);
+    //alert($curr);
+    $.ajax({
+
+        type: "GET",
+         url: "./controller/get_currency_details.php",
+         
+         success : function(response)
+         {
+             if(response){
+                alert(response);
+                var currency=JSON.parse(response);
+                if($purpose == 'sell'){
+                    //setCookie('total',response);
+                 document.getElementById("max_selling_amount").innerHTML="maximum selling amount = "+ parseFloat(currency.total);;
+                 document.getElementById("transfer_amount_in").setAttribute("max",parseFloat(currency.total));
+                 document.getElementById("max_selling_amount").style.color="green";
+                 document.getElementById("input_commission").value=parseFloat(currency.commission);
+                 document.getElementById("input_selling_rate").value=parseFloat(currency.selling_rate);
+
+                }
+                else{
+                    console.log("BUY");
+                    document.getElementById("input_commission").value=parseFloat(currency.commission);
+                    document.getElementById("input_purchasing_rate").value=parseFloat(currency.purchase_rate);
+
+                }
+                 
+                                
+            }
+            else{
+                console.log("no any response");
+            }
+        }
+    }); 
+}
+
+function calculate_total($purpose){
+    if($purpose=='sell'){
+        console.log("got it");
+        var reqd_amount=document.getElementById('transfer_amount_in').value;
+        var rate=document.getElementById('input_selling_rate').value;
+        var commission=document.getElementById('input_commission').value;
+        var total=reqd_amount*rate*(1+commission/100);
+        document.getElementById('total_amount').value=total.toFixed(2);
+        console.log(total);
+
+    }
+    else{
+        console.log('BUY');
+        var reqd_amount=document.getElementById('transfer_amount_in').value;
+        var rate=document.getElementById('input_purchasing_rate').value;
+        var commission=document.getElementById('input_commission').value;
+        var total=reqd_amount*rate;
+        var pay_to_customer=total*(1-commission/100);
+        document.getElementById('total_amount').value=total.toFixed(2);
+        document.getElementById('pay_to_customer').value=pay_to_customer.toFixed(2);
+    }
+    
+}

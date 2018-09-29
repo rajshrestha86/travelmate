@@ -1,4 +1,5 @@
 <?php
+    $title="Admin Login";
     include 'header.php';
 ?>
 

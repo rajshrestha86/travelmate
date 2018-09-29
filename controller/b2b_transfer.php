@@ -15,21 +15,24 @@
         $staff=$_SESSION['staff_username'];
 
         $sql1="UPDATE inventory SET total = IF(branch=$from,total-$amount,total+$amount) WHERE branch IN ($from,$to) AND name IN ('$currency')";
-        $sql2="INSERT INTO `b2b_transaction`(`from`, `to`, `amount`, `timestamp`, `staff`) VALUES ($from,$to,$amount,now(),'$staff')";
+        $sql2="INSERT INTO b2b_transaction(sender,receiver,currency,amount,timestamp,staff) VALUES($from,$to,'$currency',$amount,now(),'$staff');";
 
-        $result=mysqli_query($conn,$sql1);
-        if(!$result){
+        $result1=mysqli_query($conn,$sql1);
+        
+        if(!$result1){
             $flag=false;
             echo "Error Details: ". mysqli_error($conn);
         }
-        $result=mysqli_query($conn,$sql2);
-        if(!$result){
+        $result2=mysqli_query($conn,$sql2);
+        if(!$result2){
             $flag=false;
             echo "Error Details: ".mysqli_error($conn) ;
         }
-        if ($flag){
+        
+        if ($flag){ 
+            
             mysqli_commit($conn);
-            echo "<script>alert('Transaction Complete');</script>";
+            //echo "<script>alert('Transaction Complete');</script>";
             header('Location: ../B2B_transfer.php');
         }
         else{

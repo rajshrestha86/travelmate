@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if(!isset($_SESSION['staff_username']))
+    header('location: staff-login.php');
+
 $title="Branch Transaction";
 //$selected="transaction";
 include 'header.php';
@@ -26,12 +29,13 @@ include 'header.php';
                 <div class="col-lg-12">
                     <div class="table-responsive">
 
-                            <table class="table">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>From</th>
                                         <th>To</th>
+                                        <th>Currency</th>
                                         <th>Amount</th>
                                         <th>Timestamp</th>
                                         <th>Staff</th>
@@ -43,7 +47,7 @@ include 'header.php';
 
 
 
-                                    $sql="SELECT sender.name as sender,receiver.name as receiver,amount,timestamp,staff from b2b_transaction AS T JOIN branch AS sender JOIN branch AS receiver ON T.from=sender.id AND T.to=receiver.id ORDER BY timestamp DESC";
+                                    $sql="SELECT sender.name as sender,receiver.name as receiver,currency,amount,timestamp,staff from b2b_transaction AS T JOIN branch AS sender JOIN branch AS receiver ON T.sender=sender.id AND T.receiver=receiver.id ORDER BY timestamp DESC;";
                                     $result=mysqli_query($conn,$sql);
                                     $count = 1;
                                     while($row = mysqli_fetch_assoc($result)) {
@@ -53,10 +57,11 @@ include 'header.php';
                                        
 
 
-                                        <tr>
+                                        <tr class="<?php if($count % 2 == 0) echo "success"?>">
                                             <td><?php echo  $count ?></td>        
                                             <td><?php echo  $row["sender"]?></td>
                                             <td><?php echo  $row["receiver"]?></td>
+                                            <td><?php echo  $row["currency"]?></td>
                                             <td><?php echo  $row["amount"]?></td>
                                             <td><?php echo  $row["timestamp"]?></td>
                                             <td><?php echo  $row["staff"]?></td>

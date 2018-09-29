@@ -1,4 +1,7 @@
 <?php 
+session_start();
+if(!isset($_SESSION['username']))
+    header('location: admin-login.php');
 $title="Branch Registration";
 include 'header.php';
 ?>
@@ -41,6 +44,13 @@ include 'header.php';
                         <input type="number" class="form-control" name="total" id="input_currency_amount" placeholder="Enter Amount of Currency Here">
                     </div>
             
+                </div>
+            
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Commission Percentage</label>
+                    <div class="col-sm-5">
+                        <input type="number"  name="commission" id="input_currency_commission" class="form-control" placeholder="Enter Commission percentage" required>
+                    </div>
                 </div>
 
             <div class="form-group row">

@@ -1,8 +1,12 @@
 <?php 
+    session_start();
+    if(!isset($_SESSION['staff_username']))
+        header('location: staff-login.php');
+
     $title="Admin";
     $selected="dashboard";
     include 'header.php';
-    session_start();
+    
 ?>
 
 <div id="wrapper">

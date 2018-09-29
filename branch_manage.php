@@ -1,7 +1,10 @@
 <?php 
-$title="Branch Management";
+    session_start();
+    if(!isset($_SESSION['username']))
+        header('location: admin-login.php');
+    $title="Branch Management";
     //$selected="dashboard";
-include 'header.php';
+    include 'header.php';
 ?>
 
 <div id="wrapper">
