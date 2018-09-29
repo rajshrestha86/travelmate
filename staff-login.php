@@ -1,4 +1,5 @@
 <?php
+$title="Staff Login";
     include 'header.php';
 ?>
 

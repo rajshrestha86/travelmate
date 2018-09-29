@@ -1,4 +1,8 @@
 <?php 
+    session_start();
+    if(!isset($_SESSION['username']))
+        header('location: admin-login.php');
+
     $title="Admin";
     $selected="dashboard";
     include 'header.php';

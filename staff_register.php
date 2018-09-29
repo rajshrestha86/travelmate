@@ -1,5 +1,8 @@
 <?php 
-   $title="Staff Registration";
+    session_start();
+    if(!isset($_SESSION['username']))
+        header('location: admin-login.php');
+    $title="Staff Registration";
    include 'header.php';
    ?>
 <div id="wrapper">

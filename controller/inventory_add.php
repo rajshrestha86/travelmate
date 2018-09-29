@@ -4,9 +4,8 @@
 		$name=$_POST['name'];
 		$total=$_POST['total'];
 		$branch=$_COOKIE['branch_selected'];
-		$country=$_POST['country'];
-		
-		
+		$country=$_POST['country'];	
+		$commission=$_POST['commission'];
 
 
         
@@ -43,7 +42,7 @@
 						$row = mysqli_fetch_assoc($res);
 						$branchID=$row['id'];
 
-						$sql="INSERT INTO inventory (name,country,total,image,branch) VALUES ('$name', '$country', $total, '$filename', '$branchID');";
+						$sql="INSERT INTO inventory (name,country,total,commission,image,branch) VALUES ('$name', '$country', $total, $commission, '$filename', '$branchID');";
 						$result=mysqli_query($conn,$sql);
 						
 						if($result){

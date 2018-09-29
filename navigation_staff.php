@@ -119,9 +119,7 @@
                             <li>
                                 <a href="sell_cash.php">Sell Cash</a>
                             </li>
-                            <li>
-                                <a href="b2c_transaction.php">Transaction</a>
-                            </li>
+                            
                             
                         </ul>
                     </li>
@@ -162,7 +160,7 @@
                                 <a href="b2b_transfer.php">Transfer Money</a>
                             </li>
                             <li>
-                                <a href="branch_manage.php">Adjust Rates</a>
+                                <a href="adjust_rate.php">Adjust Rates</a>
                             </li>
                             
                         </ul>

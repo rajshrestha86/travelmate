@@ -28,7 +28,7 @@ include 'header.php';
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Currency</label>
                     <div class="col-sm-5">
-                    <select name="currency" id="currency_selector" class="form-control" onchange="get_currency_details(this.options[this.selectedIndex].text,'sell')" required>
+                    <select name="currency" id="currency_selector" class="form-control" onchange="get_currency_details(this.options[this.selectedIndex].text)" required>
                                             <option disabled selected value> -- select Currency -- </option>
                                              <?php
                                                  include './controller/connection.php';
@@ -71,7 +71,7 @@ include 'header.php';
             <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Forex Amount</label>
                     <div class="col-sm-5">
-                    <input type="number" step="0.01" class="form-control" id="transfer_amount_in" name="forex_amount" placeholder="Enter Amount of Currency Here"  min="0" max="1" onchange="calculate_total('sell')" required><i id="max_selling_amount" ></i>
+                    <input type="number" step="0.01" class="form-control" id="transfer_amount_in" name="forex_amount" placeholder="Enter Amount of Currency Here"  min="0" max="1" onchange="calculate_total()" required><i id="max_selling_amount" ></i>
                     </div>            
             </div>
 

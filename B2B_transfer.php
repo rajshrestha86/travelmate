@@ -1,5 +1,8 @@
 <?php 
 session_start();
+if(!isset($_SESSION['staff_username']))
+    header('location: staff-login.php');
+
 $title="Branch-Branch Transfer";
 include 'header.php';
 
