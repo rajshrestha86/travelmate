@@ -1,19 +1,6 @@
  <?php include 'header.php' ?>
     
 
-  <?php 
-   if($_GET)
-   {
-       echo 'GET REquest';
-
-   }
-
-
-if($_POST['quantity']){
-   echo 'POST_REQUEST';
-}
-
-?>
     
     
     <div class="table-responsive">

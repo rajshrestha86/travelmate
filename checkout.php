@@ -41,7 +41,7 @@ if (!isset($_SESSION['id'])) {
                     <h4 class="card-title mt-2">Please fill in the checkout form</h4>
                 </header>
                 <article class="card-body">
-                <?php include 'controller/errors.php' ?>
+                
                 <form action='controller/checkout.php' method='post'>
                     <div class="form-row">
                         <div class="col form-group">

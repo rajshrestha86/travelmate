@@ -25,8 +25,9 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <?php session_start() ?>
-        <?php if(!$_SESSION['id']) {?><li><a href="login.php">Login</a></li>
+        
+        <?php if(!isset($_SESSION['id'])) {?><li><a href="login.php">Login</a></li>
+        
         <li><a href="register.php">Register</a></li> <?php }   else {?>
         <li><a href="logout.php">Logout</a></li> 
         <li><a href="profile.php" class='fa fa-gear'></a></li> 

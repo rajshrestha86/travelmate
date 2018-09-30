@@ -3,19 +3,7 @@
   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
   rel="stylesheet"  type='text/css'>
 
-    <?php 
-     if($_GET)
-     {
-         echo 'GET REquest';
-  
-     }
-  
-  
-  if($_POST['quantity']){
-     echo 'POST_REQUEST';
-  }
-  
-  ?>
+    
       
       <div class="table-responsive">
   
@@ -34,14 +22,14 @@
   
   
                 session_start();
-                $username=$_SESSION['id'];
-              $branch_id=$_GET['branch_id'];
-              $sql="SELECT * FROM cart where username='$username'";
-              $result=mysqli_query($conn,$sql);
-              
-              $count = 1;
-              while($row = mysqli_fetch_assoc($result)) {
-  
+                if(isset($_SESSION['id'])){
+                     $username=$_SESSION['id'];
+                    $sql="SELECT * FROM cart where username='$username'";
+                    $result=mysqli_query($conn,$sql);
+                    
+                    $count = 1;
+                    while($row = mysqli_fetch_assoc($result)) {
+        
                   ?>
   
   
@@ -60,6 +48,7 @@
                   <?php 
                   $count=$count+1;
               }
+            }
   
               if(mysqli_num_rows($result)==0)
                   echo '

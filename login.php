@@ -34,7 +34,7 @@ if (isset($_SESSION['id'])) {
 <article class="card-body">
 
 <?php
-
+if(isset($_GET['redirect']))
 if($_GET['redirect']==true)
                   echo '
                   <div class="alert alert-info">

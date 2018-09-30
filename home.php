@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['id']))
+        header("location: index.php");
+
+?>
+
 <?php include "./controller/connection.php" ?>
 <?php include 'navigation_header.php'?>
 
@@ -10,21 +17,6 @@
 
     <div class="col-md-8 col-sm-12 col-lg-8">
     <h1>
-    <?php 
-     if($_GET)
-     {
-         echo 'GET REquest';
-
-     }
-
-
- if($_POST){
-     echo 'POST_REQUEST';
- }
-
-    
-?>
-
     </h1>
 
 
