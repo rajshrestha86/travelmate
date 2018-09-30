@@ -19,6 +19,8 @@
                     session_start();
                     $_SESSION['id'] = $username;
                     $_SESSION['success'] = "You are now logged in";
+                    if($_POST['redirect_url']!='')
+                        header('location: test.php');
                     header('location: /travelmate/home.php');
                 } else {
                     echo 'Wrong_password';

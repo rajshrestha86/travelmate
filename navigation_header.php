@@ -16,11 +16,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Money Exchange</a></li>
-        <li><a href="#">Online Remittence</a></li>
-        <li><a href="#">Locations</a></li>
-        <li><a href="#">Forms</a></li>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="#">Shop Locations</a></li>
+        <li><a href="#">Privacy and Policy</a></li>
         <li><a href="#">Refund Policy</a></li>
         <li><a href="#">Contact US</a></li>
         <li><a href="#">About US</a></li>
@@ -30,7 +28,9 @@
         <?php session_start() ?>
         <?php if(!$_SESSION['id']) {?><li><a href="login.php">Login</a></li>
         <li><a href="register.php">Register</a></li> <?php }   else {?>
-        <li><a href="logout.php">Logout</a></li> <?php } ?>
+        <li><a href="logout.php">Logout</a></li> 
+        <li><a href="profile.php" class='fa fa-gear'></a></li> 
+        <?php } ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
