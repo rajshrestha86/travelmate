@@ -17,18 +17,18 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="home.php">Home</a></li>
-        <li><a href="#">Shop Locations</a></li>
-        <li><a href="#">Privacy and Policy</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Contact US</a></li>
-        <li><a href="#">About US</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+        <li><a href="contact.html">Contact US</a></li>
+        <li><a href="about.html">About US</a></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <?php session_start() ?>
-        <?php if(!$_SESSION['id']) {?><li><a href="login.php">Login</a></li>
+        
+        <?php if(!isset($_SESSION['id'])) {?><li><a href="login.php">Login</a></li>
+        
         <li><a href="register.php">Register</a></li> <?php }   else {?>
-        <li><a href="logout.php">Logout</a></li> 
+          <li><a href="checkout.php">Checkout</a></li> 
+          <li><a href="logout.php">Logout</a></li> 
         <li><a href="profile.php" class='fa fa-gear'></a></li> 
         <?php } ?>
       </ul>

@@ -41,8 +41,8 @@ if (!isset($_SESSION['id'])) {
                     <h4 class="card-title mt-2">Please fill in the checkout form</h4>
                 </header>
                 <article class="card-body">
-                <?php include 'controller/errors.php' ?>
-                <form action='controller/checkout.php' method='post'>
+                
+                <form action='controller/checkout.php' method='POST' enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="col form-group">
                             <label>Full name </label>   
@@ -55,11 +55,17 @@ if (!isset($_SESSION['id'])) {
                         <input type="text" name='bank_name' class="form-control" placeholder="">
                         <small class="form-text text-muted">The name of the bank money is being sent to.</small>
                     </div> <!-- form-group end.// -->
+
+                     <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name='email' class="form-control" placeholder="">
+                        <small class="form-text text-muted">We will send a receipt to you in this email.</small>
+                    </div> <!-- form-group end.// -->
                     
                     <div class="form-group">
               <label>Upload the image of the Voucher</label>
               
-                <input type="file"  class="form-control" name="photo" id="input_currency_image">
+                <input type="file"  class="form-control" name="voucher" >
             </div>
 
                     <div class="form-row">
