@@ -45,14 +45,27 @@
                                 <div class="panel-body">
                                     <div id="morris-donut-chart2"></div>
                                 </div>
-                                <!-- /.panel-body -->
                             </div>
-                            <!-- /.panel -->
+                            
                         </div>
                 </div>
+
+
+                <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Sales Today</div>
+                                
+                                <div class="panel-body">
+                                    <div id="morris-area-chart"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                </div>
+
             </div>
 
-           
+                      
            
 
         </div>
