@@ -1,4 +1,7 @@
 <?php
+   session_start();
+   if(isset($_SESSION['username']))
+       header('location: admin.php');
     $title="Admin Login";
     include 'header.php';
 ?>

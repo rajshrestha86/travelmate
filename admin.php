@@ -24,8 +24,36 @@
                 </div>
             </div>
 
-            <!-- ... Your content goes here ... -->
-            <p>This is dashboard. Here we include charts and graphs and statistics.</p>
+            <div class="row-lg-12">
+                <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Sales This week</div>
+                                
+                                <div class="panel-body">
+                                    <div id="morris-donut-chart"></div>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                </div>
+
+                <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Sales Today</div>
+                                
+                                <div class="panel-body">
+                                    <div id="morris-donut-chart2"></div>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+                        </div>
+                </div>
+            </div>
+
+           
+           
 
         </div>
     </div>

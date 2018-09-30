@@ -389,3 +389,85 @@ function calculate_total($purpose){
     }
     
 }
+
+
+
+// $(function() {
+//     Morris.Donut({
+//             element: 'morris-donut-chart',
+//             data: [{
+//                 label: "Download Sales",
+//                 value: 12
+//             }, {
+//                 label: "In-Store Sales",
+//                 value: 30
+//             }, {
+//                 label: "Mail-Order Sales",
+//                 value: 20
+//             }],
+//             resize: true
+//         });
+// });
+
+$(function() {
+
+    $.ajax({
+
+        type: "GET",
+         url: "controller/top_sales.php",
+         success : function(text)
+         {
+             status = text;
+             var array=JSON.parse(text);
+             var data=[];
+             for(var i=0; i<array.length;i++){
+                 data.push({
+                     'label':array[i].currency,
+                     'value':parseInt(array[i].total_sold)
+
+                 });
+                 
+                //  data[i]['currency']=array[i].currency;
+                //  data[i]['sales']=parseInt(array[i].total_sales);
+
+             }
+             Morris.Donut({
+                element: 'morris-donut-chart',
+                data: data,
+                resize: true
+            });
+            console.log(data);
+
+         }
+    });
+
+    $.ajax({
+
+        type: "GET",
+         url: "controller/daily_sales.php",
+         success : function(text)
+         {
+             status = text;
+             var array=JSON.parse(text);
+             var data=[];
+             for(var i=0; i<array.length;i++){
+                 data.push({
+                     'label':array[i].currency,
+                     'value':parseInt(array[i].total_sold)
+
+                 });
+                 
+                //  data[i]['currency']=array[i].currency;
+                //  data[i]['sales']=parseInt(array[i].total_sales);
+
+             }
+             Morris.Donut({
+                element: 'morris-donut-chart2',
+                data: data,
+                resize: true
+            });
+            console.log(data);
+
+         }
+    });
+});

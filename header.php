@@ -23,7 +23,7 @@
     <link href="css/custom.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <!-- <link href="css/morris.css" rel="stylesheet"> -->
+    <<link href="css/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,6 +52,10 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/morris.min.js"></script>
+<script src="js/raphael.min.js"></script>
+<!-- <script src="js/morris-data.js"></script> -->
+
 
 
 

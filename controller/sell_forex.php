@@ -39,7 +39,7 @@
         if ($flag){
             mysqli_commit($conn);
             echo "<script>alert('Transaction Complete');</script>";
-            header('Location: ../B2B_transfer.php');
+            header('Location: ../sell_forex.php');
         }
         else{
             mysqli_rollback($conn);
