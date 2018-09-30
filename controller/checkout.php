@@ -3,17 +3,18 @@
 	if($_POST){		
 		$name=$_POST['name'];
 		$bank_name=$_POST['bank_name'];
-		$contact=$_COOKIE['contact'];
+		$contact=$_POST['contact'];
+		$file=$_FILES["photo"]["name"];
+		echo "Filename ".$file;
 		
 		
 		
 
 
-        
-		// }
+    
 		
 		
-		if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
+		if(isset($_FILES["photo"]) ){
 			$allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
 			$filename = $_FILES["photo"]["name"];
 			$filetype = $_FILES["photo"]["type"];
@@ -29,41 +30,40 @@
 			if($filesize > $maxsize)
 				die("Error: File size is larger than the allowed limit.");
 		
-			// Verify MYME type of the file
-			if(in_array($filetype, $allowed)){
-				// Check whether file exists before uploading it
-				if(file_exists("../upload/" . $_FILES["photo"]["name"])){
-					echo $_FILES["photo"]["name"] . " is already exists.";
-				} 
-				else{
-					
-					$sq="SELECT id FROM branch WHERE name = '$branch';";
-					$res=mysqli_query($conn,$sq);
-					if($res){
-						$row = mysqli_fetch_assoc($res);
-						$branchID=$row['id'];
-
-						$sql="INSERT INTO inventory (name,country,total,image,branch) VALUES ('$name', '$country', $total, '$filename', '$branchID');";
-						$result=mysqli_query($conn,$sql);
+				// Verify MYME type of the file
+				if(in_array($filetype, $allowed)){
+					// Check whether file exists before uploading it
+					if(file_exists("../upload/" . $_FILES["photo"]["name"])){
+						echo $_FILES["photo"]["name"] . " is already exists.";
+					} 
+					else{
 						
-						if($result){
-							move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $_FILES["photo"]["name"]);
-							echo '<script> alert("Success Dabase Insertion ! Your file was uploaded successfully.")</script>;';
-							header('Location:../add_currency.php');
-					
-						}
-							
-							
-						else
-							echo $conn->connect_error;
+							$row = mysqli_fetch_assoc($res);
+							$branchID=$row['id'];
 
-					
+							$sql="INSERT INTO transaction (customer_name, bank_name, contact, voucher_image) VALUES ('$name', '$bank_name', '$contact', '$file');";
+							$result=mysqli_query($conn,$sql);
+							
+							if($result){
+								move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $_FILES["photo"]["name"]);
+								echo '<script> alert("Success Dabase Insertion ! Your file was uploaded successfully.")</script>;';
+								header('Location:../home.php');
+						
+							}
+								
+								
+							else
+								echo '<script> alert("Error.")</script>;';
+
+						
+						
 					}
 				}
-			}
-		}	 
+ 
 		else{
 			echo "Error: " . $_FILES["photo"]["error"];
 		}
+
 	}
+}
 ?>

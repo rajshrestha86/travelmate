@@ -42,7 +42,7 @@ if (!isset($_SESSION['id'])) {
                 </header>
                 <article class="card-body">
                 <?php include 'controller/errors.php' ?>
-                <form action='' method='post'>
+                <form action='controller/checkout.php' method='post'>
                     <div class="form-row">
                         <div class="col form-group">
                             <label>Full name </label>   
@@ -120,22 +120,16 @@ $(document).ready(function() {
     var defaultOption = $('#location option:selected').val();
 $("#forex-table").load('get_forex_rates.php?branch_id='+defaultOption);
 $("#cart-table").load('cart_items.php')
-setInterval(()=> {$("#cart-table").load('cart_items.php')}, 500);
 
 
 
-
-});
-
-
-
-
-$("#location").change(function(){
-    $("#forex-table").load('get_forex_rates.php?branch_id='+$(this).val());
-    $("#cart-table").load('cart_items.php');
 
 
 });
+
+
+
+
 
 
 

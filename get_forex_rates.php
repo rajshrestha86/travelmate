@@ -24,7 +24,7 @@ if($_POST['quantity']){
                 <th>Currency</th>
                 <th>Selling Rate (AUD)</th>
                 <th>Purchase Rate (AUD)</th>
-                <th> Quantity </th>
+                <th>  </th>
                 
             </tr>
         </thead>
@@ -47,11 +47,11 @@ if($_POST['quantity']){
                     <td><?php echo  $row["currency"]?></td>
                     <td><?php echo  $row["selling_rate"]?></td>
                     <td><?php echo  $row["purchase_rate"]?></td>
-                    <td>
+                    <td style="{width: 20px;}">
                     
                     <div class="col form-group">
-                            <input type="number" id="quantity-<?php echo $count ?>" style="{width: 20px;}"/> 
-		                    <button class="btn btn-primary btn-block" onclick='addtocart(<?php echo $count ?>, <?php echo $branch_id ?>,  "<?php echo  $row["currency"]?>", <?php echo  $row["purchase_rate"]?>)'> Add  </button>
+                            <input type="number" id="quantity-<?php echo $count ?>" style="width: 50px;"/> 
+		                    <a class="fa fa-shopping-cart fa-fw" onclick='addtocart(<?php echo $count ?>, <?php echo $branch_id ?>,  "<?php echo  $row["currency"]?>", <?php echo  $row["purchase_rate"]?>)'></a>
                             </div> <!-- form-group end.// -->
                             
                     
