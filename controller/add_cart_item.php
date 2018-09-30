@@ -16,6 +16,8 @@
         $quantity=$_POST['quantity'];
         $exchange_rate=$_POST['exchange_rate'];
         $branch=$_POST['branch'];
+        $commission=$_POST['commission'];
+        
        
 
         $user_check_query = "SELECT * FROM cart WHERE username='$username' AND branch='$branch' AND currency='$currency' LIMIT 1";
@@ -37,7 +39,7 @@
     }
         
         
-        $sql="INSERT INTO cart(username, currency, quantity, exchange_rate, branch) VALUES('$username', '$currency', '$quantity' ,'$exchange_rate', '$branch')";
+        $sql="INSERT INTO cart(username, currency, quantity, exchange_rate, branch, commission) VALUES('$username', '$currency', '$quantity' ,'$exchange_rate', '$branch','$commission')";
         $result=mysqli_query($conn,$sql);
         if($result){
             echo "Added card item successfully.";

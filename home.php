@@ -11,21 +11,21 @@
 
 <div class="container">
     <div class="row">
-    <div class="col-md-2 col-lg-2">
+    <div class="col-md-1 col-lg-1">
 
     </div>
 
-    <div class="col-md-8 col-sm-12 col-lg-8">
+    <div class="col-md-10 col-sm-12 col-lg-10 row" style="background-color: #fff;">
     <h1>
     </h1>
 
 
-  <div class="row">
-  <div class="col-md-8">
+<div class="col-md-7">
+  
         <div class="form-group">
-        <label for="location">Select branch to view exchange rates:</label>
+        <label for="location ">Select branch to view exchange rates:</label>
 
-        <select class="form-control" id="location">
+        <select class="form-control " id="location" style="width: 250px;">
         <!-- <option default >Choose a location to view the exchange rates.</option> -->
             <?php 
 
@@ -41,7 +41,10 @@
             
                 <?php } ?>
         </select>
+
+        <hr>
         </div>
+                
 
 
 
@@ -57,16 +60,30 @@
 
 </div>
 
+<div class="col-md-5 col-lg-5">
 
-<div class="col-md-4" >
-    <a class='btn btn-success' id='checkout-btn' href='checkout.php' >Check Out</a>
+
+    </div>
+
+<div class="col-md-5" style=" border: 1px solid;" >
+    
+<br>
+<div class="bg-primary">
+                    
+                  <strong>You have following items in your cart.</strong> 
+                
+                
+                </div>
+
+
+                <br>
     <div  id='cart-table'>
 
 
 
     </div>
 
-</div<
+</div>
 
 
 
@@ -74,7 +91,7 @@
 
 
 
-    <div class="col-md-2 col-lg-2">
+    <div class="col-md-1 col-lg-1">
 
 
 
