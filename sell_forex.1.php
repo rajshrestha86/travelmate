@@ -105,6 +105,12 @@ include 'header.php';
                         <input type="text" class="form-control" name="phone" id="input_currency_amount" placeholder=" " required>
                     </div>            
             </div>
+            <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="email" id="input_currency_amount" placeholder=" " required>
+                    </div>            
+            </div>
 
         <div class="form-group row">
           <div class="offset-sm-3 offset-md-3 col-sm-10">

@@ -49,7 +49,19 @@ include 'header.php';
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Commission Percentage</label>
                     <div class="col-sm-5">
-                        <input type="number"  name="commission" id="input_currency_commission" class="form-control" placeholder="Enter Commission percentage" required>
+                        <input type="number" step="0.01" name="commission" id="input_currency_commission" class="form-control" placeholder="Enter Commission percentage" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Selling Rate</label>
+                    <div class="col-sm-5">
+                        <input type="number" step="0.01" name="selling_rate" id="input_selling_rate" class="form-control" placeholder="Enter Selling Rate" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Purchasing Rate</label>
+                    <div class="col-sm-5">
+                        <input type="number" step="0.01" name="purchasing_rate" id="input_purchasing_rate" class="form-control" placeholder="Enter Purchasing Rate" required>
                     </div>
                 </div>
 

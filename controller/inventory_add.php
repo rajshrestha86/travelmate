@@ -6,6 +6,8 @@
 		$branch=$_COOKIE['branch_selected'];
 		$country=$_POST['country'];	
 		$commission=$_POST['commission'];
+		$selling_rate=$_POST['selling_rate'];
+		$purchasing_rate=$_POST['purchasing_rate'];
 
 
         
@@ -41,23 +43,43 @@
 					if($res){
 						$row = mysqli_fetch_assoc($res);
 						$branchID=$row['id'];
+						mysqli_autocommit($conn,false);
+						$flag=true;
 
 						$sql="INSERT INTO inventory (name,country,total,commission,image,branch) VALUES ('$name', '$country', $total, $commission, '$filename', '$branchID');";
+						$sql1="INSERT INTO exchange_rates (currency,selling_rate,purchase_rate,branch) VALUES ('$name', $selling_rate, $purchasing_rate, '$branchID');";
 						$result=mysqli_query($conn,$sql);
+
 						
-						if($result){
-							move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $_FILES["photo"]["name"]);
-							echo '<script> alert("Success Dabase Insertion ! Your file was uploaded successfully.")</script>;';
-							header('Location:../add_currency.php');
-					
+						if(!$result){
+							$flag=false;
+							echo "Error Details Q1: ". mysqli_error($conn);
 						}
+						$result1=mysqli_query($conn,$sql1);
+						if(!$result1){
+							$flag=false;
+							echo "Error Details Q2: ".mysqli_error($conn) ;
+						}
+						
+						if ($flag){ 
 							
-							
-						else
-							echo $conn->connect_error;
+							mysqli_commit($conn);
+							move_uploaded_file($_FILES["photo"]["tmp_name"], "../upload/" . $_FILES["photo"]["name"]);
+								echo '<script> alert("Success Dabase Insertion ! Your file was uploaded successfully.")</script>;';
+								header('Location:../add_currency.php');
+							//echo "<script>alert('Transaction Complete');</script>";
+							//header('Location: ../B2B_transfer.php');
+						}
+						else{
+							mysqli_rollback($conn);
+							echo "Transaction failed. Rolling back transactions...";
+						}
+						mysqli_close($conn);
 
 					
 					}
+					else
+						echo "ERROR in QUERY";
 				}
 			}
 		}	 

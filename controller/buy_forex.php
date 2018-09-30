@@ -13,6 +13,7 @@
         $status=1;
         $branch=$_SESSION['staff_branch'];
         $phone=$_POST['phone'];
+        $email=$_POST['email'];
         
         
 
@@ -38,8 +39,60 @@
         }
         if ($flag){
             mysqli_commit($conn);
+            $msg='<html>
+                    <head><title></title></head><body>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Currency</th>
+                                        <th>Commission %</th>
+                                        <th>purchase_rate</th>
+                                        <th>Forex_Amount</th>
+                                        <th>Total</th>
+                                        <th>Paid</th>
+                                        <th>Customer_Name</th>
+                                        <th>phone</th>
+                                        <th>branch</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+
+                                        <tr>
+                                        <td>'.$currency.'</td>
+                                            <td>'. $commission.'</td>
+                                            <td>'. $purchasing_rate.'</td>
+                                            <td>'. $forex_amount.'</td>
+                                            <td>'. $total_amount.'</td>
+                                            <td>'. $pay_to_customer.'</td>
+                                            <td>'. $customer_name.'</td>
+                                            <td>'.$phone.'</td>
+                                            <td>'. $_COOKIE['branch_selected'].'</td>             
+                                            
+
+                                        </tr>
+
+
+                                </tbody>
+                            </table></body></html>';
+
+            include 'send_mail.php';
+            $mail->Body = $msg;
+
+            if ($mail->send()){
+                //$msg = "You have been registered! Please verify your email!";
+  
+                header('Location: ../sell_forex.php');
+  
+            }else{
+                //$msg = "Something wrong happened! Please try again!";
+                echo "Mail can't be sent";
+                header('Location: ../sell_cash.php');
+            }
             echo "<script>alert('Transaction Complete');</script>";
-            header('Location: ../B2B_transfer.php');
+            header('Location: ../sell_cash.php');
         }
         else{
             mysqli_rollback($conn);
